@@ -42,8 +42,18 @@ fn main() {
     println!("Hello world!");
     #[tari_feature(add_pair)]
     println!("40 + 2 = {}", add_pair(40, 2));
-
+    println!("foo={}", foo());
     println!("Bye, world!");
+}
+
+#[tari_feature(add_pair)]
+fn foo() -> usize {
+    1
+}
+
+#[tari_feature(!add_pair)]
+fn foo() -> usize {
+    2
 }
 ```
 
@@ -71,6 +81,7 @@ Finished dev [unoptimized + debuginfo] target(s) in 7.44s
      Running `target/debug/feature_gates`
 Hello world!
 40 + 2 = 42
+foo=1
 Bye, world!
 ```
 
@@ -91,5 +102,6 @@ old_feature. We decided not to go with this featuree. Tracking issue: https://gi
     Finished dev [unoptimized + debuginfo] target(s) in 6.15s
      Running `target/debug/feature_gates`
 Hello world!
+foo=2
 Bye, world!
 ```
