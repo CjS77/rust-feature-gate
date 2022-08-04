@@ -1,5 +1,5 @@
-mod status;
 mod feature;
+mod status;
 
-pub use status::Status;
 pub use feature::Feature;
+pub use status::Status;

@@ -12,10 +12,19 @@ fn main() {
     println!("Hello world!");
     #[tari_feature(add_pair)]
     println!("40 + 2 = {}", add_pair(40, 2));
-
+    println!("foo={}", foo());
     println!("Bye, world!");
 }
 
+#[tari_feature(add_pair)]
+fn foo() -> usize {
+    1
+}
+
+#[tari_feature(!add_pair)]
+fn foo() -> usize {
+    2
+}
 // generates
 
 /*

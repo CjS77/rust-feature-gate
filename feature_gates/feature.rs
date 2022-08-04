@@ -1,7 +1,6 @@
 use super::Status;
 use std::fmt::{Display, Formatter};
 
-
 pub struct Feature {
     name: &'static str,
     description: &'static str,
@@ -10,19 +9,23 @@ pub struct Feature {
 }
 
 impl Feature {
-    pub const fn new(name: &'static str, description: &'static str, tracking_issue: Option<usize>, status: Status) ->
-                                                                                                                Self {
+    pub const fn new(
+        name: &'static str,
+        description: &'static str,
+        tracking_issue: Option<usize>,
+        status: Status,
+    ) -> Self {
         Feature {
             name,
             description,
             tracking_issue,
-            status
+            status,
         }
     }
 
     pub fn issue_url(&self) -> String {
         match self.tracking_issue {
-            Some(n) =>  format!("https://github.com/tari-project/tari/issues/{}", n),
+            Some(n) => format!("https://github.com/tari-project/tari/issues/{}", n),
             None => "None".into(),
         }
     }
@@ -56,6 +59,12 @@ impl Feature {
 
 impl Display for Feature {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}. {}. Tracking issue: {}", self.name, self.description, self.issue_url())
+        write!(
+            f,
+            "{}. {}. Tracking issue: {}",
+            self.name,
+            self.description,
+            self.issue_url()
+        )
     }
 }
